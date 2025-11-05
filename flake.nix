@@ -40,7 +40,7 @@
                           pages'    =
                             let
                               m = {
-                                path = "${meta.thisRoute}/${route}";
+                                path = "${meta.route}/${route}";
                                 name = name;
                                 last = meta;
                               };
