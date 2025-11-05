@@ -30,8 +30,8 @@
                  in g;
                make = { static ? []
                       , inputs ? []
-                      , route  ? ""
                       , pages  ? {}
+                      , route
                       , name
                       , page
                       , meta
@@ -45,7 +45,7 @@
                                 last = meta;
                               };
 
-                              f = x: make (pages.${x} // { name = x; meta = m; });
+                              f = x: make (pages.${x} // { name = x; route = x; meta = m; });
                               g = attrNames pages;
                             in map f g;
                         in stdenv.mkDerivation {
