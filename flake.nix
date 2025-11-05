@@ -38,13 +38,13 @@
                         let
                           pages'    =
                             let
-                              m = {
+                              m = n: {
                                 path = "${meta.last.path}${name}/";
-                                name = name;
                                 last = meta;
+                                name = n;
                               };
 
-                              f = x: make (pages.${x} // { name = x; meta = m; });
+                              f = x: make (pages.${x} // { name = x; meta = m x; });
                               g = attrNames pages;
                             in map f g;
                         in stdenv.mkDerivation {
