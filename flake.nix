@@ -31,7 +31,6 @@
                make = { static ? []
                       , inputs ? []
                       , pages  ? {}
-                      , route
                       , name
                       , page
                       , meta
@@ -40,12 +39,12 @@
                           pages'    =
                             let
                               m = {
-                                path = "${meta.path}/${route}";
+                                path = "${meta.last.path}/${meta.name}";
                                 name = name;
                                 last = meta;
                               };
 
-                              f = x: make (pages.${x} // { name = x; route = x; meta = m; });
+                              f = x: make (pages.${x} // { name = x; meta = m; });
                               g = attrNames pages;
                             in map f g;
                         in stdenv.mkDerivation {
@@ -73,11 +72,10 @@
                meta = {
                  inherit name;
                  last = meta;
-                 path = "";
+                 path = "/";
                };
              in make {
                inherit static inputs pages page name meta;
-               route = "";
              };
     };
 }
