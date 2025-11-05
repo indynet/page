@@ -76,7 +76,8 @@
                  path = "";
                };
              in make {
-               inherit static inputs route pages page name meta;
+               inherit static inputs pages page name meta;
+               route = "";
              };
     };
 }
