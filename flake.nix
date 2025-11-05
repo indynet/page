@@ -39,7 +39,7 @@
                           pages'    =
                             let
                               m = n: {
-                                path = "${meta.last.path}${name}/";
+                                path = "${meta.path}${n}/";
                                 last = meta;
                                 name = n;
                               };
